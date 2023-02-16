@@ -1,16 +1,16 @@
 import os, platform
-from .commandTest import echoCheck
+from .commandTest import *
 from flask import Flask, render_template, request, redirect, url_for, session
 
 #inital configuration
 app = Flask(__name__)
+#maybe put this in a config file?
 app.config['SECRET_KEY'] = 'NAWI'
 
 @app.route('/')
 #Basic layout for each route
 def index():
-    osName=platform.system() + " " + platform.version()
-    return render_template("index.html", platformName=osName, check=echoCheck())
+    return render_template("index.html", platformName=platform.system(), check=echoCheck(), ping=pingCheck())
 
 
 if __name__ == "__main__":
