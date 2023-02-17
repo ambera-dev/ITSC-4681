@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'NAWI'
 @app.route('/')
 #Basic layout for each route
 def index():
-    return render_template("index.html", platformName=platform.system(), check=echoCheck(), ping=pingCheck())
+    return render_template("index.html", platformName=platform.system(), echo=echoCheck(), ping=pingCheck())
 
 
 if __name__ == "__main__":

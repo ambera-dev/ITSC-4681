@@ -6,7 +6,7 @@
     <body>
         <h1>Hello World</h1>
         <p>This is a basic "Hello World!" page for a baseline.</p>
-        <p>Can we echo from terminal to here?: {{ check }}</p>
+        <p>Can we echo from terminal to here?: {{ echo }}</p>
 
         <h2>OS-compatible tools test</h2>
         {% if platformName == "Windows" %}
@@ -16,7 +16,7 @@
 
         <h2>Test Command timeouts:</h2>
         <p>Can we run ping commands from here? :</p>
-        <!--Definitely make these dynamic to prevent page hanging-->
+        <!--TODO: Definitely make these dynamic to prevent page hanging-->
         <p>{{ ping }}</p>
     </body>
 </html>

@@ -16,9 +16,9 @@ def echoCheck():
     #echoCheck.returncode
 
 def pingCheck():
-    try:
-        #4 seconds is default ping timeout.
-        pingCheck = subprocess.run(["ping", "127.0.0.1"], capture_output=True, text=True, timeout=4)
-    except subprocess.TimeoutError:
-        return "timeout."
+    pingCheck = subprocess.run(["ping", "127.0.0.1"], capture_output=True, text=True)
     return pingCheck.stdout
+    # while pingCheck.poll() is None:
+    #     print(pingCheck.stdout.readline())
+    # print(pingCheck.stdout.read())
+    # pingCheck.stdout.close()
