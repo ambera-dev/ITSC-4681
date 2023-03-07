@@ -2,21 +2,38 @@
 <html>
     <head>
         <title>Network Analysis Web Interface</title>
-    </head>
+        </head>
     <body>
         <h1>Hello World</h1>
-        <p>This is a basic "Hello World!" page for a baseline.</p>
-        <p>Can we echo from terminal to here?: {{ echo }}</p>
 
         <h2>OS-compatible tools test</h2>
         {% if platformName == "Windows" %}
-        <p>Platform is <strong>Windows</strong>.
+        <p>Platform is <strong>{{ platformName }}</strong>.
         Display Windows-specific tools.</p>
         {% endif %}
 
-        <h2>Test Command timeouts:</h2>
-        <p>Can we run ping commands from here? :</p>
-        <!--TODO: Definitely make these dynamic to prevent page hanging-->
-        <p>{{ ping }}</p>
+        <h2>Test Commands:</h2>
+        <p>Can we run commands from here?</p>
+        <p>Can we run NMAP commands from here? Try doing a scan on loopback.</p>
+        <form method="POST" action="#">
+            
+            IP to ping: <input type="text" name="ipaddr" required><br>
+            <input type="submit" value="Run commands">
+         </form>
+        
+
+    <h2>Ping Results:</h2>
+    <!--TODO: Definitely make these dynamic to prevent page hanging-->
+    {% if ip %}
+        <p>ping results for {{ ip }}:</p>
+    {% endif %}
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+    <h2>Nmap Results:</h2>
+    {% if nmap %}
+        <p>Results for nmap scan:</p>
+        <p>{{ nmap }}</p>
+    {% endif %}
     </body>
 </html>

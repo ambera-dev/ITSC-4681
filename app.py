@@ -1,5 +1,5 @@
 import os, platform
-from .commandTest import *
+from .static.commandTest import *
 from flask import Flask, render_template, request, redirect, url_for, session
 
 #inital configuration
@@ -10,7 +10,13 @@ app.config['SECRET_KEY'] = 'NAWI'
 @app.route('/')
 #Basic layout for each route
 def index():
-    return render_template("index.html", platformName=platform.system(), echo=echoCheck(), ping=pingCheck())
+    return render_template("index.html", platformName=platform.system())
+
+@app.route('/', methods=['POST'])
+def response():
+    ipaddr = request.form.get("ipaddr")
+    returnresult = pingCheck(ipaddr)
+    return render_template("index.html", ip=ipaddr, result=returnresult, nmap=nmapCheck())
 
 
 if __name__ == "__main__":
