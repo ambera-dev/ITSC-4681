@@ -21,7 +21,7 @@ $wiresharkWindowsURL = "https://2.na.dl.wireshark.org/win64/Wireshark-win64-4.0.
 $tcpdumpWindowsURL = "https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/PortableGit-2.40.0-64-bit.7z.exe"
 
 #url vars for Linux installers
-$nmapLinuxURL = "https://nmap.org/dist/nmap-7.93-1.x86_64.rpm"
+#$nmapLinuxURL = "https://nmap.org/dist/nmap-7.93-1.x86_64.rpm"
 #$wiresharkLinuxURL = "https://archlinux.org/packages/community/x86_64/wireshark-cli/" #ArchLinux installer, for other releases, see here: https://www.wireshark.org/download.html
 #$tcpdumpLinuxURL = "apt-get install tcpdump" #tcpdump install for Linux OS
 
