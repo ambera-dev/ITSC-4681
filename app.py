@@ -10,13 +10,11 @@ app.config['SECRET_KEY'] = 'NAWI'
 @app.route('/')
 #Basic layout for each route
 def index():
-    return render_template("index.html", platformName=platform.system())
+    return render_template("index.html", platform=platform.system())
 
 @app.route('/', methods=['POST'])
 def response():
-    ipaddr = request.form.get("ipaddr")
-    returnresult = pingCheck(ipaddr)
-    return render_template("index.html", ip=ipaddr, result=returnresult, nmap=nmapCheck())
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
