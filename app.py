@@ -10,11 +10,11 @@ app.config['SECRET_KEY'] = 'NAWI'
 @app.route('/')
 #Basic layout for each route
 def index():
-    return render_template("index.html", platform=platform.system())
+    return render_template("home.html", platform=platform.system())
 
 @app.route('/', methods=['POST'])
 def response():
-    return render_template("index.html")
+    return render_template("home.html")
 
 
 if __name__ == "__main__":

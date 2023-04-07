@@ -1,39 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Network Analysis Web Interface</title>
-        </head>
-    <body>
-        <h1>Hello World</h1>
-
-        <h2>OS-compatible tools test</h2>
-        {% if platformName == "Windows" %}
-        <p>Platform is <strong>{{ platformName }}</strong>.
-        Display Windows-specific tools.</p>
-        {% endif %}
-
-        <h2>Test Commands:</h2>
-        <p>Can we run commands from here?</p>
-        <p>Can we run NMAP commands from here? Try doing a scan on loopback.</p>
-        <form method="POST" action="#">
-            
-            IP to ping: <input type="text" name="ipaddr" required><br>
-            <input type="submit" value="Run commands">
-         </form>
-        
-
-    <h2>Ping Results:</h2>
-    <!--TODO: Definitely make these dynamic to prevent page hanging-->
-    {% if ip %}
-        <p>ping results for {{ ip }}:</p>
-    {% endif %}
-    {% if result %}
-        <p>{{ result }}</p>
-    {% endif %}
-    <h2>Nmap Results:</h2>
-    {% if nmap %}
-        <p>Results for nmap scan:</p>
-        <p>{{ nmap }}</p>
-    {% endif %}
-    </body>
+        <title>Network Analysis Web Interface: HOME</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Network Analysis Web Interface: Capstone 2023">
+    </head>
+<body>
+<nav>
+    <a href="#">Help</a> ||
+    <a href="#">About</a>
+</nav>
+<div class="sidebar">
+    <p>Here is where the sidebar will go.</p>
+    <ul>
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+</div>
+<div class="mainContainer">
+    <h1>Main body text</h1>
+    <p>Probably going to use Flexbox to get these aligned correctly.</p>
+    <p>Platform is detected as <strong>{{ platform }}</strong>.</p>
+</div>
+</body>
 </html>
