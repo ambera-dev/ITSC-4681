@@ -1,0 +1,16 @@
+body {
+    font-family: Helvetica, Arial, sans-serif
+}
+
+.homeborder {
+    border: 1px solid black;
+  }
+
+.smallborder {
+    border: 1px solid black;
+}
+
+.tallborder {
+    border: 1px solid black;
+}
+  
