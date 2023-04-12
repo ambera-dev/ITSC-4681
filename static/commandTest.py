@@ -4,9 +4,9 @@
 import subprocess
 
 def pingCheck(inputIP):
-    pingOut = subprocess.run(["ping", inputIP], capture_output=True, text=True)
+    pingOut = subprocess.run(["ping", inputIP], stdout=subprocess.PIPE)
     return pingOut.stdout
 
 def nmapCheck():
-    nmapOut = subprocess.run(["nmap", "-F" ,"127.0.0.1"], capture_output=True, text=True)
+    nmapOut = subprocess.run(["nmap", "-F" ,"127.0.0.1"], stdout=subprocess.PIPE)
     return nmapOut.stdout
