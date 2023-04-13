@@ -1,31 +1,33 @@
 #!/bin/bash
 
-PACKAGES=(
+packages=(
 	nmap
 	wireshark
 	tcpdump
 )
+
+function packrun(){
 echo "Detecting your package manager..."
 
-PACKMANAGER="NULL"
+packmanager="NULL"
 
 #If one of these returns an error, skip it. Else, keep going to next option:
 
 if command -v apt-get >/dev/null 2>&1; then
 	echo "Using apt as the package manager."
-	PACKMANAGER="apt-get"
+	packmanager="apt-get"
 
 elif command -v yum >/dev/null 2>&1; then
 	echo "Using yum as the package manager."
-	PACKMANAGER="yum"
+	packmanager="yum"
 else
 	echo "Unable to detect package manager. Installing from tarball source..."
 fi
 
-if [ "$PACKMANAGER" != "NULL" ]; then
-	for pack in "${PACKAGES[@]}"
+if [ "$packmanager" != "NULL" ]; then
+	for pack in "${packages[@]}"
 	do
-		sudo $PACKMANAGER install -y "$pack"
+		sudo $packmanager install -y "$pack"
 	done
 else
 	#make installer dir
@@ -48,6 +50,26 @@ else
     echo "The dir does not exist."
 fi
 fi
+}
 
-##pls work##
+#user consent prompt
+echo "The following packages will be installed: "
+for pack in "${packages[@]}" 
+	do
+		printf "$pack\n"
+	done
+echo "Do you want to continue? [Y/n]"
+read choice
 
+case "$choice" in
+	'Y' | 'y' )
+		echo "Continuing with installation..."
+		packrun
+		;;
+	'N' | 'n' )
+		echo "Quitting."
+		;;
+		* )
+		echo "Invalid input, quitting."
+		;;
+esac
