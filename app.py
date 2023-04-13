@@ -16,6 +16,13 @@ def index():
 def response():
     return render_template("home.html")
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/help')
+def help():
+    return render_template("help.html")
 
 if __name__ == "__main__":
     app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
