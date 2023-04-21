@@ -6,11 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-2OfEclj0CjHg9Mz9CkkjPZXjJIEt1kpK8K+VNGRvPsbJlZsTfpb8IqTtvD+QogcJ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>An about page!</h1>
-    <a href="home.html">Home</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#">Network Analysis Web Interface</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help.html">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>About</h1>
+    <body>
+        This tool was created by <a href="https://www.linkedin.com/in/amber-atkins-2556941bb/" target="_blank">Amber Atkins</a>
+        and <a href="https://www.linkedin.com/in/max-carey-7a9334191/" target="_blank">Max Carey</a> for their Capstone Project 
+        at the University of North Carolina at Charlotte.
+        <br>The application displays the output of tools such as nmap (a network scanner), TShark 
+        (a terminal oriented version of Wireshark, a network protocol analyzer), and tcpdump
+        (a packet analyzer).
+        <br>Assistance and oversight by <a href="https://cci.charlotte.edu/directory/nadia-najjar" target="_blank">Nadia Najjar</a>.
+
+        
+        <br><br><a href="https://github.com/ambera-dev/ITSC-4681" target="_blank">GitHub Repository</a>
+        
+    </body>
+    <br><a href="home.html">Home</a>
     <!-- Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-VQlDf/P+nZmJ/xCjXvyt9+FRtRJhLNU68/Jxodq3zXY/w2M0QQPwkHHSZwyCuhc" crossorigin="anonymous"></script>
