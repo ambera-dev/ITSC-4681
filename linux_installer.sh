@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#TODO: add dnf/rpm/pacman pkg managers?
-
 packages=(
 	nmap
 	wireshark
@@ -49,7 +47,7 @@ function tarballpack(){
 	cd ../nmap-7.93
 	./configure && make -s && sudo make install
 	cd ../wireshark-*
-	 cmake && make && sudo make install
+	cmake && make && sudo make install
 	echo "Installation finished. Time elasped: $SECONDS seconds."
 }
 
@@ -67,14 +65,29 @@ if command -v apt-get >/dev/null 2>&1; then
 elif command -v yum >/dev/null 2>&1; then
 	echo "Using yum as the package manager."
 	packmanager="yum"
+
+elif command -v dnf >/dev/null 2>&1; then
+	echo "Using dnf as the package manager."
+	packmanager="dnf"
+
+elif command -v pacman >/dev/null 2>&1; then
+	echo "Using pacman as the package manager."
+	packmanager="pacman"
 else
-	echo "Unable to detect package manager. Installing from tarball source..."
+	echo "Unable to detect package manager. Installing from tarball source...this should take around 5 minutes."
 fi
 
 if [ "$packmanager" != "NULL" ]; then
 	for pack in "${packages[@]}"
 	do
-		sudo $packmanager install -y "$pack"
+		case $packmanager in
+			apt | yum | dnf )
+			sudo $packmanager install -y "$pack"
+			;;
+			pacman )
+			sudo $packmanager -S "$pack"
+			;;
+		esac
 	done
 else
 	tarballpack

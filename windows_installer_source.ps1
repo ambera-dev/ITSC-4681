@@ -20,16 +20,6 @@ $nmapWindowsURL = "https://nmap.org/dist/nmap-7.93-setup.exe"
 $wiresharkWindowsURL = "https://2.na.dl.wireshark.org/win64/Wireshark-win64-4.0.4.exe"
 $tcpdumpWindowsURL = "https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/PortableGit-2.40.0-64-bit.7z.exe"
 
-#url vars for Linux installers
-#$nmapLinuxURL = "https://nmap.org/dist/nmap-7.93-1.x86_64.rpm"
-#$wiresharkLinuxURL = "https://archlinux.org/packages/community/x86_64/wireshark-cli/" #ArchLinux installer, for other releases, see here: https://www.wireshark.org/download.html
-#$tcpdumpLinuxURL = "apt-get install tcpdump" #tcpdump install for Linux OS
-
-#url vars for macOS installers
-$nmapmacOSURL = "https://nmap.org/dist/nmap-7.93.dmg"
-$wiresharkmacOSURL = "https://2.na.dl.wireshark.org/osx/Wireshark%204.0.4%20Arm%2064.dmg" #Arm installer, for Intel, see the README
-#$tcpdumpmacOSURL = "sudo port install tcpdump" #tcpdump install for macOS
-
 #output vars for downloads
 $outputDir = [System.IO.Path]::Combine([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop), "Installers")
 
@@ -80,5 +70,5 @@ Write-Host "`tInstalling TCPDump..."
 Start-Process -FilePath (Join-Path -Path $outputDir -ChildPath "git.exe") -ArgumentList "/S"
 
 
-Write-Host "The selected programs have been installed. You may now close this script."
+Write-Host "The selected programs have been installed. Press Enter to close this script..."
 Read-Host
