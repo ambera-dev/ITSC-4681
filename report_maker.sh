@@ -34,6 +34,11 @@ function toolCheck(){
 }
 
 function menu(){
+    #dir check
+    if [ ! -d "out/" ]
+    then
+        mkdir out
+    fi
     outFile=out/outFile.txt
     nmapOut=out/nmap.txt
     tsharkOut=out/tshark.txt
