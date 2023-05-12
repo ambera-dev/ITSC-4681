@@ -36,17 +36,18 @@ function toolCheck(){
 function menu(){
     outFile=out/outFile.txt
     nmapOut=out/nmap.txt
+    tsharkOut=out/tshark.txt
     clear
     printf "\tNetwork Analysis Report Maker\n"
     printf "Please make a selection below.\nAvailable tools are:\n"
     toolCheck
-    printf "\n1. NMAP Quick Scan\n2. NMAP Deep Scan\n3. tshark Scan\n4. TCPDUMP Port-Specific Scan\n5. View Report (text file)\n"
+    printf "\n1. NMAP Quick Scan\n2. NMAP Deep Scan\n3. tshark Quick Scan\n4. TCPDUMP Port-Specific Scan\n5. View Report (text file)\n"
     read -p "Enter choice " choice
     case $choice in 
         1 ) 
              if userConsent 0; then
                 read -p "NMAP on which IP address?: " ipaddr
-                 echo "--------NMAP QUICK SCAN--------" >> $outFile
+                 echo "----------NMAP QUICK SCAN----------" >> $outFile
                  nmap -F $ipaddr | tee -a $outFile | tee -a $nmapOut
                
             fi
@@ -54,16 +55,16 @@ function menu(){
         2 )
             if userConsent 0; then
                 read -p "NMAP on which IP address?: " ipaddr
-                echo "--------NMAP DEEP SCAN--------" >> $outFile
+                echo "----------NMAP DEEP SCAN----------" >> $outFile
                 nmap -T4 -A $ipaddr | tee -a $outFile | tee -a $nmapOut
                 
             fi
             ;;
         3 )
             if userConsent 0; then
-                echo "TShark will listen for all traffic...exit program when TShark should stop."
-                sleep 1
-                #fix tshark
+                echo "TShark will listen for all traffic for one minute."
+                echo "----------TSHARK QUICK SCAN----------" >> $outFile
+                sudo tshark -a duration:60 | tee -a $outFile | tee -a $tsharkOut
             fi
             ;;
         4 )
@@ -72,8 +73,9 @@ function menu(){
                     read -p "TCPDUMP on which port?: " portNum
                     [[ $portNum =~ ^[0-9]+$ ]] || { echo "Enter a valid number"; continue; }
                     if (( portNum >= 1 && portNum <= 65535  )); then
-                         echo "--------TCPDUMP SCAN--------" >> $outFile
-                         sudo tcpdump -nnS port $portNum >> $outFile
+                         echo "----------TCPDUMP SCAN----------" >> $outFile
+                         echo "TShark will listen for traffic on port $portNum for one minute."
+                         sudo timeout 60 tcpdump -nnS port $portNum >> $outFile
                         break
                     else
                         echo "Please enter a valid TCP/UDP port number."
